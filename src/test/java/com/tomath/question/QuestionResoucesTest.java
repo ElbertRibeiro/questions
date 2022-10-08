@@ -1,7 +1,5 @@
 package com.tomath.question;
 
-import com.tomath.core.question.QuestionDTO;
-import com.tomath.core.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,8 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         dtos.setSubjectMatter("teste");
         HttpEntity<QuestionDTO> httpEntity = new HttpEntity<>(dtos);
         ResponseEntity<String> response =
-                testRestTemplate.exchange("/questions/create", HttpMethod.POST, httpEntity, String.class);
+                testRestTemplate.exchange("/v1/api/question/create", HttpMethod.POST, httpEntity, String.class);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        service.deleteQuestion(response.getBody());
+        service.deleteQuestion(Long.valueOf(Objects.requireNonNull(response.getBody())));
     }
 }
