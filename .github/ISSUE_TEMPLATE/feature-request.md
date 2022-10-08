@@ -1,8 +1,8 @@
 ---
 name: Solicitação de recurso
 about: Sugira uma ideia para este projeto
-title: 'Feature: '
-labels: feature
+title: 'Enhancement: '
+labels: enhancement
 assignees: ElbertRibeiro
 
 ---
