@@ -1,6 +1,6 @@
 package com.tomath.question;
 
-import com.tomath.question.entity.Matter;
+import com.tomath.entity.Matter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ class QuestionControllerTest {
         dtos.setSubjectMatter("teste");
         HttpEntity<QuestionDTO> httpEntity = new HttpEntity<>(dtos);
         ResponseEntity<String> response =
-                testRestTemplate.exchange("/v1/api/question/create", HttpMethod.POST, httpEntity, String.class);
+                testRestTemplate.exchange("/question/create", HttpMethod.POST, httpEntity, String.class);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         service.deleteQuestion(Long.valueOf(Objects.requireNonNull(response.getBody())));
     }
@@ -42,7 +42,7 @@ class QuestionControllerTest {
         Long id = service.createQuestion(question);
 
         ResponseEntity<QuestionDTO> response =
-                testRestTemplate.exchange("/v1/api/question/loadQuestion?id=" + id,
+                testRestTemplate.exchange("/question/loadQuestion?id=" + id,
                         HttpMethod.GET, new HttpEntity<>(null),  QuestionDTO.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());

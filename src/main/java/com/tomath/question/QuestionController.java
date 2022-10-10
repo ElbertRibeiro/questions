@@ -1,24 +1,28 @@
 package com.tomath.question;
 
-import com.tomath.question.entity.Matter;
-import com.tomath.util.ObjectMapperUtils;
+import com.tomath.entity.Matter;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/v1/api/question")
+@RequestMapping("/question")
 public class QuestionController {
+    private ModelMapper modelMapper;
     @Autowired
     QuestionService questionService;
 
     @GetMapping
     @CrossOrigin(origins = "http://localhost:19006/")
     public ResponseEntity<List<QuestionDTO>> getQuestionDb() {
-        return new ResponseEntity<>(ObjectMapperUtils.mapAll(questionService.getQuestionList(), QuestionDTO.class),
+        return new ResponseEntity<>(questionService.getQuestionList().stream()
+                .map(entity -> modelMapper.map(entity, QuestionDTO.class))
+                .collect(Collectors.toList()),
                 HttpStatus.OK);
     }
 
@@ -38,7 +42,7 @@ public class QuestionController {
     }
 
     @GetMapping("/loadQuestion")
-    public ResponseEntity<QuestionDTO> getQuestion(@RequestParam("id") long idQuestion){
+    public ResponseEntity<QuestionDTO> getQuestion(@RequestParam("id") long idQuestion) {
         Question question = questionService.getQuestion(idQuestion);
 
         QuestionDTO dto = new QuestionDTO();

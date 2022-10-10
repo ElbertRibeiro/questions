@@ -1,4 +1,4 @@
-package com.tomath.question.entity;
+package com.tomath.entity;
 
 import lombok.Data;
 

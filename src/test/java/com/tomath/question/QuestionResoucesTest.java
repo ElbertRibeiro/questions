@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         dtos.setSubjectMatter("teste");
         HttpEntity<QuestionDTO> httpEntity = new HttpEntity<>(dtos);
         ResponseEntity<String> response =
-                testRestTemplate.exchange("/v1/api/question/create", HttpMethod.POST, httpEntity, String.class);
+                testRestTemplate.exchange("/question/create", HttpMethod.POST, httpEntity, String.class);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         service.deleteQuestion(Long.valueOf(Objects.requireNonNull(response.getBody())));
     }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -27,6 +29,6 @@ class UserControllerTest {
         ResponseEntity<String> response =
                 testRestTemplate.exchange("/users/create", HttpMethod.POST, httpEntity, String.class);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        service.deleteUser(Long.valueOf(response.getBody()));
+        service.deleteUser(Long.valueOf(Objects.requireNonNull(response.getBody())));
     }
 }
