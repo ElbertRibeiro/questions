@@ -1,6 +1,6 @@
 package com.tomath.question;
 
-import com.tomath.entity.Matter;
+import com.tomath.matter.Matter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

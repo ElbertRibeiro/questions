@@ -1,6 +1,6 @@
 package com.tomath.question;
 
-import com.tomath.entity.Matter;
+import com.tomath.matter.Matter;
 import lombok.Data;
 
 import javax.persistence.*;

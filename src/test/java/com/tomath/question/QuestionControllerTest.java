@@ -1,6 +1,6 @@
 package com.tomath.question;
 
-import com.tomath.entity.Matter;
+import com.tomath.matter.Matter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
