@@ -1,4 +1,4 @@
-package com.tomath.entity;
+package com.tomath.matter;
 
 import lombok.Data;
 
