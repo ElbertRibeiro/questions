@@ -1,4 +1,4 @@
-package com.tomath.user;
+package com.math.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

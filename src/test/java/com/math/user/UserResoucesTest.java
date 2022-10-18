@@ -1,4 +1,4 @@
-package com.tomath.user;
+package com.math.user;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -16,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class UserControllerTest {
+class UserResoucesTest {
     @Autowired private TestRestTemplate testRestTemplate;
     @Autowired private UserService service;
 
     @Test void insertUsersTest(){
         UserDTO dtos = new UserDTO();
         dtos.setNameUser("teste teste teste");
-        dtos.setTypeUser("prof");
+        dtos.setTypeUser(String.valueOf(1));
         dtos.setEmail("teste@teste.com");
         HttpEntity<UserDTO> httpEntity = new HttpEntity<>(dtos);
         ResponseEntity<String> response =

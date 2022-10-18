@@ -1,4 +1,4 @@
-package com.tomath.status;
+package com.math.status;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

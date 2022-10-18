@@ -1,4 +1,4 @@
-package com.tomath.user;
+package com.math.user;
 
 import lombok.Data;
 
