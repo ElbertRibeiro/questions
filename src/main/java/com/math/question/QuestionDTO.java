@@ -1,4 +1,4 @@
-package com.tomath.question;
+package com.math.question;
 
 import lombok.Data;
 

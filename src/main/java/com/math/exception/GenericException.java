@@ -1,4 +1,4 @@
-package com.tomath.exception;
+package com.math.exception;
 
 public class GenericException extends RuntimeException{
     public GenericException() {

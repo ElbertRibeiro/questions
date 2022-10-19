@@ -1,6 +1,6 @@
-package com.tomath.question;
+package com.math.question;
 
-import com.tomath.exception.GenericException;
+import com.math.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

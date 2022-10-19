@@ -1,4 +1,4 @@
-package com.tomath.exception;
+package com.math.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
