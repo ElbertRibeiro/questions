@@ -18,7 +18,6 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:19006/")
     public ResponseEntity<List<QuestionDTO>> getQuestionDb() {
         return new ResponseEntity<>(questionService.getQuestionList().stream()
                 .map(entity -> modelMapper.map(entity, QuestionDTO.class))
