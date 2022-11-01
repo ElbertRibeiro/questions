@@ -1,10 +1,28 @@
 version: "3"
 
 services:
-  service:
-    build: .
+  api:
+    image: maven:3-adoptopenjdk-8
+    container_name: math
+    working_dir: /usr/app
     command: mvn spring-boot:run
     ports:
       - "8080:8080"
     volumes:
       - .:/usr/app
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  database:
+    image: postgres:13.1-alpine
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
