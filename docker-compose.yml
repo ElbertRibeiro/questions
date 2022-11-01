@@ -23,6 +23,8 @@ services:
     container_name: db
     ports:
       - "5432:5432"
+    volumes:
+      - ./database:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
