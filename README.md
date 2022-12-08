@@ -30,6 +30,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 O dev.finances é uma aplicação de controle financeiro, onde é possível cadastrar e excluir transações e ver o saldo de entrada e saída 💰
+Para acessar a documentação da api basta acessa o [link](http://localhost:8080/v1/api/swagger-ui/index.html#/)
 
 ## 🔖 Layout
 
@@ -37,7 +38,7 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 
 ## :memo: Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENCE.md) para mais detalhes.
 
 ## 🍃 RestAPI
 
