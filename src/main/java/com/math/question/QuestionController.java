@@ -4,7 +4,6 @@ import com.math.matter.Matter;
 import com.math.subject.Subject;
 import com.math.subject.SubjectDTO;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +14,15 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
-    private ModelMapper modelMapper;
-    @Autowired
-    QuestionService questionService;
+    final QuestionService questionService;
+
+    public QuestionController(QuestionService questionService) {
+        this.questionService = questionService;
+    }
 
     @GetMapping
     public ResponseEntity<List<QuestionDTO>> getQuestionDb() {
+        ModelMapper modelMapper = new ModelMapper();
         return new ResponseEntity<>(questionService.getQuestionList().stream()
                 .map(entity -> modelMapper.map(entity, QuestionDTO.class))
                 .collect(Collectors.toList()),
