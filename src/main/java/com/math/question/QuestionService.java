@@ -1,7 +1,6 @@
 package com.math.question;
 
 import com.math.exception.GenericException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +8,11 @@ import java.util.List;
 @Service
 public class QuestionService {
 
-    @Autowired
-    QuestionRepository questionRepository;
+    final QuestionRepository questionRepository;
+
+    public QuestionService(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
 
     public List<Question> getQuestionList() {
         List<Question> questions = questionRepository.findAll();
@@ -25,12 +27,12 @@ public class QuestionService {
         return questionRepository.save(question).getId();
     }
 
-    public void deleteQuestion(Long id){
+    public void deleteQuestion(Long id) {
         Question question = questionRepository.findQuestionById(id);
         questionRepository.delete(question);
     }
 
-    public Question getQuestion(long idQuestion){
+    public Question getQuestion(long idQuestion) {
         return questionRepository.findQuestionById(idQuestion);
     }
 }
