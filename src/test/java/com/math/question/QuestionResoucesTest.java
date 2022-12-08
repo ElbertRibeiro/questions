@@ -1,5 +1,6 @@
 package com.math.question;
 
+import com.math.subject.SubjectDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @Test void getQuestionDbTest() {
         QuestionDTO dtos = new QuestionDTO();
+        SubjectDTO subjectDTO = new SubjectDTO();
+        subjectDTO.setSubjectName("teste");
         dtos.setDescription("Testee");
         dtos.setMatter("teste");
         dtos.setNivel(2);
         dtos.setRightAnswer("10");
-        dtos.setSubjectMatter("teste");
+        dtos.setSubjectName(subjectDTO);
         HttpEntity<QuestionDTO> httpEntity = new HttpEntity<>(dtos);
         ResponseEntity<String> response =
                 testRestTemplate.exchange("/question/create", HttpMethod.POST, httpEntity, String.class);
