@@ -7,7 +7,7 @@ import lombok.Data;
 public class QuestionDTO {
     private String description;
     private String matter;
-    private SubjectDTO subjectName;
+    private SubjectDTO subject;
     private int nivel;
     private String rightAnswer;
 }

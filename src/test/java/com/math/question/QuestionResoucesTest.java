@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         dtos.setMatter("teste");
         dtos.setNivel(2);
         dtos.setRightAnswer("10");
-        dtos.setSubjectName(subjectDTO);
+        dtos.setSubject(subjectDTO);
         HttpEntity<QuestionDTO> httpEntity = new HttpEntity<>(dtos);
         ResponseEntity<String> response =
                 testRestTemplate.exchange("/question/create", HttpMethod.POST, httpEntity, String.class);

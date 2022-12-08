@@ -35,7 +35,7 @@ public class QuestionController {
         matter.setTitle(questionDTO.getMatter());
 
         Subject subject = new Subject();
-        subject.setSubjectName(questionDTO.getSubjectName().getSubjectName());
+        subject.setSubjectName(questionDTO.getSubject().getSubjectName());
 
         Question question = new Question();
         question.setMatter(matter);
@@ -58,7 +58,7 @@ public class QuestionController {
         dto.setMatter(question.getMatter().getTitle());
         dto.setNivel(question.getNivel());
         dto.setRightAnswer(question.getRightAnswer());
-        dto.setSubjectName(subject);
+        dto.setSubject(subject);
 
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
