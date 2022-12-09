@@ -1,6 +1,7 @@
 package com.math.question;
 
 import com.math.matter.Matter;
+import com.math.matter.MatterDTO;
 import com.math.subject.Subject;
 import com.math.subject.SubjectDTO;
 import org.modelmapper.ModelMapper;
@@ -32,7 +33,7 @@ public class QuestionController {
     @PostMapping("/create")
     public ResponseEntity<Long> insertQuestion(@RequestBody QuestionDTO questionDTO) {
         Matter matter = new Matter();
-        matter.setTitle(questionDTO.getMatter());
+        matter.setTitle(questionDTO.getMatter().getTitle());
 
         Subject subject = new Subject();
         subject.setSubjectName(questionDTO.getSubject().getSubjectName());
@@ -53,9 +54,11 @@ public class QuestionController {
 
         QuestionDTO dto = new QuestionDTO();
         SubjectDTO subject = new SubjectDTO();
+        MatterDTO matterDTO = new MatterDTO();
+        matterDTO.setTitle(question.getMatter().getTitle());
         subject.setSubjectName(question.getSubject().getSubjectName());
         dto.setDescription(question.getDescription());
-        dto.setMatter(question.getMatter().getTitle());
+        dto.setMatter(matterDTO);
         dto.setNivel(question.getNivel());
         dto.setRightAnswer(question.getRightAnswer());
         dto.setSubject(subject);

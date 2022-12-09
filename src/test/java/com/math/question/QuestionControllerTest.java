@@ -1,6 +1,7 @@
 package com.math.question;
 
 import com.math.matter.Matter;
+import com.math.matter.MatterDTO;
 import com.math.subject.Subject;
 import com.math.subject.SubjectDTO;
 import org.junit.jupiter.api.Test;
@@ -26,9 +27,11 @@ class QuestionControllerTest {
     @Test void getQuestionDbTest() {
         QuestionDTO dtos = new QuestionDTO();
         SubjectDTO subjectDTO = new SubjectDTO();
+        MatterDTO matterDTO = new MatterDTO();
+        matterDTO.setTitle("teste");
         subjectDTO.setSubjectName("teste");
         dtos.setDescription("Testee");
-        dtos.setMatter("teste");
+        dtos.setMatter(matterDTO);
         dtos.setNivel(2);
         dtos.setRightAnswer("10");
         dtos.setSubject(subjectDTO);
