@@ -1,9 +1,5 @@
 package com.math.question;
 
-import com.math.matter.Matter;
-import com.math.matter.MatterDTO;
-import com.math.subject.Subject;
-import com.math.subject.SubjectDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,37 +28,15 @@ public class QuestionController {
 
     @PostMapping("/create")
     public ResponseEntity<Long> insertQuestion(@RequestBody QuestionDTO questionDTO) {
-        Matter matter = new Matter();
-        matter.setTitle(questionDTO.getMatter().getTitle());
-
-        Subject subject = new Subject();
-        subject.setSubjectName(questionDTO.getSubject().getSubjectName());
-
-        Question question = new Question();
-        question.setMatter(matter);
-        question.setNivel(questionDTO.getNivel());
-        question.setSubject(subject);
-        question.setDescription(questionDTO.getDescription());
-        question.setRightAnswer(questionDTO.getRightAnswer());
-
-        return new ResponseEntity<>(questionService.createQuestion(question), HttpStatus.CREATED);
+        ModelMapper modelMapper = new ModelMapper();
+        return new ResponseEntity<>(questionService.createQuestion(modelMapper.map(questionDTO, Question.class)),
+                HttpStatus.CREATED);
     }
 
     @GetMapping("/loadQuestion")
     public ResponseEntity<QuestionDTO> getQuestion(@RequestParam("id") long idQuestion) {
+        ModelMapper modelMapper = new ModelMapper();
         Question question = questionService.getQuestion(idQuestion);
-
-        QuestionDTO dto = new QuestionDTO();
-        SubjectDTO subject = new SubjectDTO();
-        MatterDTO matterDTO = new MatterDTO();
-        matterDTO.setTitle(question.getMatter().getTitle());
-        subject.setSubjectName(question.getSubject().getSubjectName());
-        dto.setDescription(question.getDescription());
-        dto.setMatter(matterDTO);
-        dto.setNivel(question.getNivel());
-        dto.setRightAnswer(question.getRightAnswer());
-        dto.setSubject(subject);
-
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return new ResponseEntity<>(modelMapper.map(question, QuestionDTO.class), HttpStatus.OK);
     }
 }
